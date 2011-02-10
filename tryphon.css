@@ -1,0 +1,128 @@
+body {
+    font-family: Verdana,Helvetica,Arial,"MS Trebuchet",sans-serif;
+}
+
+.slide {
+    border: 0;
+}
+
+#preso, .slide {
+    height: 710px;
+}
+
+h1 {
+    position: relative;
+    top: -1em;
+    margin: 0;
+    float: right;
+
+    text-align: right;
+
+    font-weight: bold;
+    font-size: 330%;
+    color:#990000;
+    text-decoration: none;
+}
+
+h2, ul {
+    clear: right;
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 2.5em;
+}
+
+.content {
+    margin-top: 5em !important;
+    background-color: #DDD5C7;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    height: 85%;
+}
+
+.content.workshop {
+    background-color: #F3F0EA;
+}
+
+.content.full-page {
+    margin-top: 0 !important;
+    background-color: white;
+    height: 100%;
+}
+
+.content.bullets li {
+    font-size: 0.8em;
+}
+
+.content img {
+    margin-left: 30px;
+    float: left;
+    clear: both;
+    margin-top: 1em;
+}
+
+.content pre {
+    padding-top: 20px;
+    font-family: Inconsolata,monospace;
+    font-size: 22px;
+}
+
+.slide .center img, .full-page img {
+    float: none;
+}
+.slide .center img {
+    margin-left: auto;
+}
+.full-page img {
+    margin-left: 0;
+}
+
+.slide .center {
+    vertical-align: top;
+}
+
+.slide .center {
+    display: block;
+    text-align: center;
+    vertical-align: top;
+    height: 85%;
+}
+
+.content #license {
+    text-align: center;
+    font-size: 0.8em;
+    margin-top: 10px;
+}
+
+.content a {
+    color: black;
+}
+
+.content #license a {
+    text-decoration: none;
+}
+
+.content #license img {
+    float: none;
+    margin: 0;
+}
+
+#footer {
+    color: white;
+    background: #990000 url('tryphon.png') no-repeat 10px 5px;
+    text-align: center;
+    padding-top: 18px;
+    height: 30px;
+}
+
+#footer:before {
+    content: 'Sysadmin for dev support'
+}
+
+#footer #slideInfo {
+    float: right;
+    margin-right: 5px;
+    font-size: 90%;
+    text-align: right;
+}
