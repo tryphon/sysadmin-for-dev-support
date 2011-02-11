@@ -1,22 +1,42 @@
 !SLIDE center
 # Sysadmin for Dev Support
+## To be or not to be the pinguin
 
-<!-- TODO -->
+![To be or not to be the pinguin](to-be-or-not-to-be-the-pinguin.jpg)
+
+!SLIDE bullets
+# Tryphon
+## Radio, Web and free software
+
+* Boxes
+* Applications
+* Services 
+
+## Consulting
+
+* puppet, dev support, ...
 
 !SLIDE bullets
 # Context
 
-* many projects
-* many (old) "servers"
-* many services
-* few people
+* Many projects
+* Many (old) "servers"
+* Many services
+* Few people
+
+!SLIDE bullets
+# Avoid
+
+* Big centralized services
+* Unmanaged servers
+* Jungle
 
 !SLIDE bullets incremental
 # Root idea
 ## VM per project
 
-* simple configuration for each project
-* several VMs by project (staging, customers)
+* Simple configuration for each project
+* Several VMs by project (staging, customers)
 
 !SLIDE bullets
 # Examples
@@ -52,21 +72,20 @@
 # Examples
 ## Staging instance
 
-* passenger
-* or tomcat 
+* passenger / tomcat
 * postgresql / mongo
 
 !SLIDE bullets
 # Architecture
 ## Hosts
 
-* xen farms
-* admin
-* switch
+* VM farms
+* Admin server<br/>(dns, puppetmaster, vpn, ...)
+* Switch
 
 !SLIDE smbullets
 # Architecture
-## VMs
+## User View
 
 * project1.acmee.priv
 * project2.acmee.priv
@@ -78,7 +97,7 @@
 # Examples
 ## Others
 
-* Stagings for customers
+* Staging VMs for customers
 * Shared tools :<br/>OSM server, Oracle server
 
 !SLIDE bullets
@@ -88,32 +107,33 @@
 * VLAN for dev
 * VLAN for staging
 * VLAN for customers (?)
+* VLAN**s**
 * vpn
 
 !SLIDE bullets incremental
 # Simplicity
 
-* 1 use / context by VM
-* no big services
-* simple tools
-* simple configurations
-* simple authentication
+* 1 usage / context by VM
+* No big services
+* Simple tools
+* Simple configurations
+* Simple authentication
 
 !SLIDE bullets
 # Flexibility
 ## Follow project 
 
-* live ... and dead
-* new project anytime
-* isolate software choices
-* shutdown useless VMs
+* Live ... and dead
+* New project anytime
+* Isolate software choices
+* Shutdown useless VMs
 
 !SLIDE bullets incremental
 # Scalability
 ## Grow with project
 
-* from 1 user<br/>git, no instance (128MB)
-* 5 users<br/>hudson, db, unit tests, java instance (2GB)
+* From 1 user<br/>git, no instance (128MB)
+* 10 users<br/>hudson, db, unit tests, java instance (2GB)
 * to huge machines to process customer data (10GB)
 * RAM and disks to grow
 
@@ -122,30 +142,30 @@
 ## Configuration management
 
 * puppet/chief/...
-* shared configurations between nodes
-* no way without (?)
+* Shared configurations between nodes
+* No way without (?)
 
 !SLIDE bullets
 # Deployment
 ## Puppet
 
 <pre>
-node 'chouette.dryade.priv' {
+node 'audiobank.tryphon.priv' {
   include common
-  include chouette::dev
+  include audiobank::dev
 }
 
-class chouette::dev {
+class audiobank::dev {
   include git::local
-  git::repository { "chouette": }
-  git::repository { "acceptance-tests": }
+  git::repository { audiobank: }
+  git::repository { "audiobank-client": }
 
   include trac::local
-  trac::project::local { chouette: }
-  trac::project::local { "acceptance-tests": }
+  trac::project::local { audiobank: }
+  trac::project::local { "audiobank-client": }
 
-  include chouette::development
-  include hudson::chouette
+  include audiobank
+  include buildbot::audiobank
 }
 </pre>
 
@@ -154,78 +174,90 @@ class chouette::dev {
 ## Configuration management
 
 * 1 minute to describe a classic node
-* few minutes to create and deploy
+* Few minutes to create and deploy
+* Ticket management
 
 !SLIDE bullets
 # Deployment
-## Keep upgrade
+## Stay up to date
 
 * Manage, no surrender
 * Security upgrades ...
-* Lock
+* Rebuild VMs
 
 !SLIDE bullets
 # Hosting
 ## @home or datacenter ?
 
-* xen farms
+* Xen farms
 * vpn
 * git
+* low activity
 * 16Go/2TB/4cores : 50€ HT ...
 
 !SLIDE bullets
 # Monitoring
 
-* a lot of (simple) services
-* "public" status view
-* notify teams
+* A lot of (simple) services
+* "Public" status view
+* Notify teams
+* ... find application errors
 
 !SLIDE bullets
 # Security
 
-* read-only public access
-* staging networks (invitee network)
+* Access by hosts
+* Admin or not
+* Read-only public access (?)
+* Staging networks (invitee network)
 
 !SLIDE bullets
 # Backup
+## On dom0
 
-* "all" : lvm/snapshot sur dom0
-* service by service : inside vms
+* "All" with lvm/snapshot
+
+## Inside VMs
+
+* Host by host
+* Service by service
+* easy to find and restore
 
 !SLIDE bullets
 # Unstable/Staging/Prod
 
-* follow project phases
-* unstable updated by CI
-* staging for milestones
+* Follow project phases
+* Unstable updated by CI
+* Staging for milestones
 
 !SLIDE bullets
 # Unstable instance
 
-* a tool for sysadmin
-* detect earlier
-* like unit tests environment
+* A tool for sysadmin
+* Detect earlier
+* Like unit tests environment
 
 !SLIDE bullets
 # Authentication
 
 * Basic : PAM + puppet
 * OpenId for customers
-* LDAP, ...
+* LDAP for big teams
 
 !SLIDE bullets
 # Databases
 
-* easy for unstable
-* strict for staging
-* ruthless for prod
+* Easy for unstable
+* Strict for staging
+* Ruthless for prod
 
 !SLIDE bullets
 # Databases
 ## Manage
 
-* create empty databases :<br/>templates, permissions
-* make easy dumps/restores
+* Create empty databases :<br/>templates, permissions
+* Make easy dumps/restores
+* Help for scripts, capistrano, ...
 
 !SLIDE bullets
 # External services
