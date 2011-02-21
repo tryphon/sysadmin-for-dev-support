@@ -14,7 +14,7 @@
 
 ## Consulting
 
-* puppet, dev support, ...
+* [puppet, dev support, ...](http://www.tryphon.eu/services)
 
 !SLIDE bullets
 # Context
@@ -141,7 +141,7 @@
 # Deployment
 ## Configuration management
 
-* puppet/chief/...
+* puppet/chef/...
 * Shared configurations between nodes
 * No way without (?)
 
@@ -261,14 +261,15 @@ class audiobank::dev {
 
 !SLIDE bullets
 # External services
-## Dev and customers
+## For dev and customers
 
-* GitHub
-* LightHouse
-* BaseCamp
+* [GitHub](http://github.com)
+* [LightHouse](http://lighthouseapp.com)
+* [BaseCamp](http://basecamphq.com)
 
 !SLIDE bullets
 # Externel dev team
+## Can be simple
 
 * detect low collaborations
 * use git/dsc
@@ -276,16 +277,17 @@ class audiobank::dev {
 
 !SLIDE bullets
 # External services
-## Deployments
+## For deployments
 
 * [Hoptoad](http://hoptoadapp.com)
 * [New Relic](http://newrelic.com)
 * [MadMini](http://madmimi.com) (mail)
 
 !SLIDE bullets
-# Questions
+# Questions ?
 
-* http://www.tryphon.eu/services
+* [Tryphon Services](http://www.tryphon.eu/services)
+* [@tryphon](http://twitter.com/tryphon)
 
 <div id="license">
   <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
@@ -295,8 +297,8 @@ class audiobank::dev {
   <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title" rel="dct:type">
     Sysadmin for Dev Support
   </span> 
-  par 
+  by
   <a xmlns:cc="http://creativecommons.org/ns#" href="http://tryphon.eu" property="cc:attributionName" rel="cc:attributionURL">Tryphon</a>
   <br/>
-  Mis à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">licence Creative Commons by-nc-sa 3.0</a>.
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons by-nc-sa 3.0 license</a>.
 </div>
